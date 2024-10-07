@@ -2,7 +2,7 @@
 CXX = g++
 
 # 編譯選項
-CXXFLAGS = -std=c++17
+CXXFLAGS = -I/opt/homebrew/opt/boost/include -L/opt/homebrew/opt/boost/lib -lboost_system -lboost_random -std=c++17
 
 # 目標可執行文件
 TARGET = main.out
