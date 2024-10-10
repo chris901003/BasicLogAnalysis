@@ -2,7 +2,7 @@
 #include <random>
 
 #include "poisson_net.h"
-#include "../Utilities/utilities_string.cpp"
+#include "../Utilities/utilities_string.h"
 
 using namespace std;
 
@@ -15,7 +15,7 @@ vector<NetPackageData> PoissonNet::generatePackages() {
     vector<NetPackageData> packages;
     for (NetPackageTypeData packageType: packageTypes) {
         int packetCount = packageType.poisson_dist(gen);
-        NetPackageData package = {genUUID(), packageType.tag, packetCount};
+        NetPackageData package = {UtilitiesString::genUUID(), packageType.tag, packetCount};
         packages.push_back(package);
     }
     return packages;
