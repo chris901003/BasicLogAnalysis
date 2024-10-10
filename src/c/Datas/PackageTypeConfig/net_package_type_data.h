@@ -3,6 +3,8 @@
 
 #include <random>
 
+#include "../PackageInfo/package_info_data.h"
+
 using namespace std;
 
 struct NetPackageTypeData {
@@ -13,6 +15,8 @@ struct NetPackageTypeData {
     NetPackageTypeData(int tag, double averageArriveRate): tag(tag), averageArriveRate(averageArriveRate) {
         poisson_dist = poisson_distribution<>(averageArriveRate);
     }
+
+    virtual PackageInfoData* generatePackageInfoData() = 0;
 };
 
 #endif

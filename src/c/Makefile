@@ -11,9 +11,10 @@ TARGET = main.out
 SRC_DIR = .
 POISSON_DIR = Poisson
 UTILS_DIR = Utilities
+DATA_DIR = Datas
 
 # 將所有的 cpp 檔案自動加進來
-SRCS = $(wildcard $(SRC_DIR)/*.cpp $(POISSON_DIR)/*.cpp) $(wildcard $(UTILS_DIR)/*.cpp)
+SRCS = $(wildcard $(SRC_DIR)/*.cpp $(POISSON_DIR)/*.cpp) $(wildcard $(UTILS_DIR)/*.cpp) $(shell find $(DATA_DIR) -name "*.cpp")
 
 # 根據 .cpp 檔案自動生成 .o 檔案
 OBJS = $(SRCS:.cpp=.o)

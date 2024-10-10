@@ -3,20 +3,33 @@
 
 #include "poisson_net.h"
 #include "../Utilities/utilities_string.h"
+#include "../Datas/PackageTypeConfig/NormalPackageType/normal_package_type_data.h"
 
 using namespace std;
 
-PoissonNet::PoissonNet(vector<NetPackageTypeData> packageTypes) {
+PoissonNet::PoissonNet(vector<NetPackageTypeData*> packageTypes) {
     this->packageTypes = packageTypes;
     gen = mt19937(random_device()());
 }
 
-vector<NetPackageData> PoissonNet::generatePackages() {
-    vector<NetPackageData> packages;
-    for (NetPackageTypeData packageType: packageTypes) {
-        int packetCount = packageType.poisson_dist(gen);
-        NetPackageData package = {UtilitiesString::genUUID(), packageType.tag, packetCount};
-        packages.push_back(package);
+vector<NetPackageData*> PoissonNet::generatePackages() {
+    for (NetPackageTypeData* packageType: packageTypes) {
+        int packetCount = packageType->poisson_dist(gen);
+        cout << "Tag: " << packageType->tag << " Packet Count: " << packetCount << endl;
+        for (int i = 0; i < packetCount; i++) {
+            packageInfoDatas.push_back(packageType->generatePackageInfoData());
+        }
     }
+    vector<NetPackageData*> packages;
+    vector<PackageInfoData*> nxt;
+    for (PackageInfoData* packageInfoData: packageInfoDatas) {
+        NetPackageData* package = packageInfoData->generatePackage();
+        // cout << "Package: " << package->id << " " << package->tag << " " << package->packetSize << " " << package->packetCount << endl;
+        if (package->packetSize > 0) {
+            packages.push_back(package);
+            nxt.push_back(packageInfoData);
+        }
+    }
+    packageInfoDatas = nxt;
     return packages;
 }
