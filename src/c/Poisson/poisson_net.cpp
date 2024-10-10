@@ -24,7 +24,6 @@ vector<NetPackageData*> PoissonNet::generatePackages() {
     vector<PackageInfoData*> nxt;
     for (PackageInfoData* packageInfoData: packageInfoDatas) {
         NetPackageData* package = packageInfoData->generatePackage();
-        // cout << "Package: " << package->id << " " << package->tag << " " << package->packetSize << " " << package->packetCount << endl;
         if (package->packetSize > 0) {
             packages.push_back(package);
             nxt.push_back(packageInfoData);

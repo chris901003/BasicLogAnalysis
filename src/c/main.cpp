@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
     vector<NetPackageTypeData*> packageTypes;
-    packageTypes.push_back(new NormalPackageTypeData(1, 2, PackageType::file, 2000, 2500));
+    packageTypes.push_back(new NormalPackageTypeData(1, 2, PackageType::webview, 2000, 2500));
     PoissonNet poissonNet(packageTypes);
     for (int i = 0; i < 3; i++) {
         vector<NetPackageData*> packages = poissonNet.generatePackages();
