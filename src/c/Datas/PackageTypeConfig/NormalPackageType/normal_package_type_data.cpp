@@ -3,15 +3,16 @@
 #include "./normal_package_type_data.h"
 #include "../../PackageInfo/FilePackageInfo/file_package_info_data.h"
 #include "../../PackageInfo/WebViewPackageInfo/web_view_package_info_data.h"
+#include "../../../Distributed/base_distributed.h"
 
 NormalPackageTypeData::NormalPackageTypeData(
     int tag, 
-    double averageArriveRate, 
+    BaseDistributed* baseDistributed,
     PackageType type, 
     double minSize, 
     double maxSize
     ): 
-    NetPackageTypeData(tag, averageArriveRate),
+    NetPackageTypeData(tag, baseDistributed),
     largePacketSizeGen(max(minSize, maxSize * 0.8), maxSize),
     smallPacketSizeGen(minSize, min(minSize * 1.5, maxSize)),
     type(type),

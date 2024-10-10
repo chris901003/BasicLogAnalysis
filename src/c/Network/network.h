@@ -1,5 +1,5 @@
-#ifndef POISSON_NET_H
-#define POISSON_NET_H
+#ifndef NETWORK_H
+#define NETWORK_H
 
 #include <iostream>
 #include <random>
@@ -10,14 +10,14 @@
 
 using namespace std;
 
-class PoissonNet {
+class Network {
     private:
     mt19937 gen;
     vector<NetPackageTypeData*> packageTypes;
     vector<PackageInfoData*> packageInfoDatas;
 
     public:
-    PoissonNet(vector<NetPackageTypeData*> packageTypes);
+    Network(vector<NetPackageTypeData*> packageTypes);
     vector<NetPackageData*> generatePackages();
 };
 

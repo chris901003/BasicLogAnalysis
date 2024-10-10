@@ -1,20 +1,20 @@
 #include <iostream>
 #include <random>
 
-#include "poisson_net.h"
+#include "network.h"
 #include "../Utilities/utilities_string.h"
 #include "../Datas/PackageTypeConfig/NormalPackageType/normal_package_type_data.h"
 
 using namespace std;
 
-PoissonNet::PoissonNet(vector<NetPackageTypeData*> packageTypes) {
+Network::Network(vector<NetPackageTypeData*> packageTypes) {
     this->packageTypes = packageTypes;
     gen = mt19937(random_device()());
 }
 
-vector<NetPackageData*> PoissonNet::generatePackages() {
+vector<NetPackageData*> Network::generatePackages() {
     for (NetPackageTypeData* packageType: packageTypes) {
-        int packetCount = packageType->poisson_dist(gen);
+        int packetCount = packageType->distributed->genPacketCount();
         cout << "Tag: " << packageType->tag << " Packet Count: " << packetCount << endl;
         for (int i = 0; i < packetCount; i++) {
             packageInfoDatas.push_back(packageType->generatePackageInfoData());

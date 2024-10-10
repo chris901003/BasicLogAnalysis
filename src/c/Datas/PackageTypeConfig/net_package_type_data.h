@@ -4,17 +4,17 @@
 #include <random>
 
 #include "../PackageInfo/package_info_data.h"
+#include "../../Distributed/base_distributed.h"
 
 using namespace std;
 
 struct NetPackageTypeData {
     int tag;
-    double averageArriveRate;
-    poisson_distribution<> poisson_dist;
+    BaseDistributed* distributed;
 
-    NetPackageTypeData(int tag, double averageArriveRate): tag(tag), averageArriveRate(averageArriveRate) {
-        poisson_dist = poisson_distribution<>(averageArriveRate);
-    }
+    NetPackageTypeData(int tag, BaseDistributed* distributed): 
+    tag(tag), 
+    distributed(distributed) {};
 
     virtual PackageInfoData* generatePackageInfoData() = 0;
 };

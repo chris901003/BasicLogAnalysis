@@ -6,6 +6,7 @@
 #include "../net_package_type_data.h"
 #include "../../PackageInfo/package_info_data.h"
 #include "../../../Utilities/RangeGenerator/range_generator.h"
+#include "../../../Distributed/base_distributed.h"
 
 enum PackageType {
     file,
@@ -24,7 +25,7 @@ struct NormalPackageTypeData: NetPackageTypeData {
     double maxSize, minSize;
     NormalPackageTypeData(
         int tag, 
-        double averageArriveRate, 
+        BaseDistributed* baseDistributed, 
         PackageType type, 
         double minSize, 
         double maxSize
