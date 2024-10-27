@@ -25,4 +25,5 @@ jobs:
     
       - name: Run test build & test
         run: |
-          make src/c python_bind_test
+          make python_bind_test
+        working-directory: src/c
