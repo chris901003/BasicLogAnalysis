@@ -2,7 +2,7 @@
 CXX = g++
 
 # ½sÄ¶¿ï¶µ
-CXXFLAGS = -I/opt/homebrew/opt/boost/include -L/opt/homebrew/opt/boost/lib -lboost_system -lboost_random -std=c++17
+CXXFLAGS = -I/usr/include -L/usr/lib -lboost_system -lboost_random -std=c++17
 
 CXXFLAGS2 = -O3 -Wall -shared -std=c++11 -fPIC -m64 $(PYBIND_INC_FLAGS) $(PYTHON_LIB_FLAGS)
 PYBIND_INC_FLAGS = $(shell python3 -m pybind11 --includes)
