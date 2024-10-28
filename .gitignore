@@ -1,3 +1,6 @@
 *.out
 *.o
 sftp.json
+.vscode
+__pycache__
+*.so
