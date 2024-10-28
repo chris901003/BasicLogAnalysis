@@ -5,14 +5,16 @@
 #include "./Datas/PackageTypeConfig/net_package_type_data.h"
 #include "./Datas/PackageTypeConfig/NormalPackageType/normal_package_type_data.h"
 #include "./Distributed/Poisson/poisson_distributed.h"
+#include "./Distributed/Normal/normal_distributed.h"
 #include "./Distributed/base_distributed.h"
 
 using namespace std;
 
 int main() {
     PoissonDistributed* distributed = new PoissonDistributed(2);
+    NormalDistributed* normalDistributed = new NormalDistributed(5, 3);
     vector<NetPackageTypeData*> packageTypes;
-    packageTypes.push_back(new NormalPackageTypeData(1, (BaseDistributed*)distributed, PackageType::live, 2000, 2500));
+    packageTypes.push_back(new NormalPackageTypeData(1, (BaseDistributed*)normalDistributed, PackageType::live, 2000, 2500));
     Network network(packageTypes);
     for (int i = 0; i < 3; i++) {
         vector<NetPackageData*> packages = network.generatePackages();
@@ -22,6 +24,5 @@ int main() {
         }
         cout << "======================" << endl;
     }
-
     return 0;
 }

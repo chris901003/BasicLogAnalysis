@@ -15,6 +15,7 @@ Network::Network(vector<NetPackageTypeData*> packageTypes) {
 vector<NetPackageData*> Network::generatePackages() {
     for (NetPackageTypeData* packageType: packageTypes) {
         int packetCount = packageType->distributed->genPacketCount();
+        cout << "Generate packetCount: " << packetCount << endl;
         for (int i = 0; i < packetCount; i++) {
             packageInfoDatas.push_back(packageType->generatePackageInfoData());
         }
