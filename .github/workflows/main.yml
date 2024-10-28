@@ -28,3 +28,8 @@ jobs:
         run: |
           make python_bind_test
         working-directory: src/c
+      
+      - name: Run partial test
+        run: |
+          make partial_test
+        working-directory: src/c

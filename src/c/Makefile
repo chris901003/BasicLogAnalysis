@@ -42,6 +42,22 @@ bind_test:
 python_bind_test: bind_test
 	pytest ../python/test/main_test.py
 
+# ====== 琿代刚 ======
+
+# ネΘ python 代刚家舱
+bind_poisson_distributed_test:
+	$(CXX) $(CXXFLAGS2) -shared -fPIC -o ../python/test/distributed/PoissonDistributedTest$(PYTHON_SUF) Pybind/DistributedTest/poisson_test.cpp
+
+# 代刚
+partial_test: poisson_distributed_test
+	@echo "===== Partial Test Finished ====="
+
+poisson_distributed_test: bind_poisson_distributed_test
+	pytest ../python/test/distributed/test.py
+# ========================
+
 # 睲瞶
 clean:
 	rm -f $(OBJS) $(TARGET)
+	find ../python -name '*.so' -type f -delete
+	find ../python -name '__pycache__' -type d -exec rm -rf {} +
