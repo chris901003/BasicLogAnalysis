@@ -6,12 +6,12 @@
 
 struct WebViewPackageInfoData: PackageInfoData {
     private:
-    static constexpr double largeFlowRate = 0.2;
     static const int largePacketMaxSize = 1500;
     static const int largePacketMinSize = 1000;
     static const int smallPacketMaxSize = 500;
     static const int smallPacketMinSize = 100;
 
+    double largeFlowRate = 0.8;
     RangeGenerator largePacketSizeGen;
     RangeGenerator smallPacketSizeGen;
 

@@ -22,5 +22,6 @@ NetPackageData* WebViewPackageInfoData::generatePackage() {
     }
     leftPacketSize -= packetSize;
     packetCount++;
+    largeFlowRate *= 0.1;
     return new NetPackageData(id, tag, packetCount, packetSize);
 }
