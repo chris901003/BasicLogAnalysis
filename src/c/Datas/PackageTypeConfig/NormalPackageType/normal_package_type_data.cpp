@@ -3,6 +3,7 @@
 #include "./normal_package_type_data.h"
 #include "../../PackageInfo/FilePackageInfo/file_package_info_data.h"
 #include "../../PackageInfo/WebViewPackageInfo/web_view_package_info_data.h"
+#include "../../PackageInfo/LivePackageInfo/live_package_info_data.h"
 #include "../../../Distributed/base_distributed.h"
 
 NormalPackageTypeData::NormalPackageTypeData(
@@ -46,6 +47,6 @@ PackageInfoData* NormalPackageTypeData::generatePackageInfoData() {
         case PackageType::webview:
             return new WebViewPackageInfoData(tag, packetSize);
         case PackageType::live:
-            break;
+            return new LivePackageInfoData(tag, packetSize, LiveQuality::medium);
     }
 }

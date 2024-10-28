@@ -12,7 +12,7 @@ using namespace std;
 int main() {
     PoissonDistributed* distributed = new PoissonDistributed(2);
     vector<NetPackageTypeData*> packageTypes;
-    packageTypes.push_back(new NormalPackageTypeData(1, (BaseDistributed*)distributed, PackageType::webview, 2000, 2500));
+    packageTypes.push_back(new NormalPackageTypeData(1, (BaseDistributed*)distributed, PackageType::live, 2000, 2500));
     Network network(packageTypes);
     for (int i = 0; i < 3; i++) {
         vector<NetPackageData*> packages = network.generatePackages();
