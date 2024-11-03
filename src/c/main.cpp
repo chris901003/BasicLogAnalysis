@@ -17,7 +17,7 @@ int main() {
     NormalDistributed* normalDistributed = new NormalDistributed(5, 3);
     UniformDistributed* uniformDistributed = new UniformDistributed(1, 10);
     vector<NetPackageTypeData*> packageTypes;
-    packageTypes.push_back(new NormalPackageTypeData(1, (BaseDistributed*)uniformDistributed, PackageType::live, 2000, 2500));
+    packageTypes.push_back(new NormalPackageTypeData(1, (BaseDistributed*)uniformDistributed, PackageType::file, 2000, 2500));
     Network network(packageTypes);
     for (int i = 0; i < 3; i++) {
         vector<NetPackageData*> packages = network.generatePackages();

@@ -48,12 +48,26 @@ python_bind_test: bind_test
 bind_distributed_test:
 	$(CXX) $(CXXFLAGS2) -shared -fPIC -o ../python/test/distributed/DistributedTest$(PYTHON_SUF) Pybind/DistributedTest/distributed_test.cpp
 
+bind_package_info_test: SRC_FILES = \
+	Pybind/PackageInfoTest/package_info_test.cpp \
+	Datas/PackageInfo/FilePackageInfo/file_package_info_data.cpp \
+	Datas/PackageInfo/WebViewPackageInfo/web_view_package_info_data.cpp \
+	Datas/PackageInfo/LivePackageInfo/live_package_info_data.cpp \
+	Datas/PackageInfo/LivePackageInfo/live_quality_data.cpp \
+	Utilities/utilities_string.cpp
+
+bind_package_info_test:
+	$(CXX) $(CXXFLAGS2) -shared -fPIC -o ../python/test/package_info/PackageInfoTest$(PYTHON_SUF) $(SRC_FILES)
+
 # ´ú¸Õ
-partial_test: distributed_test
+partial_test: distributed_test package_info_test
 	@echo "===== Partial Test Finished ====="
 
 distributed_test: bind_distributed_test
 	pytest ../python/test/distributed/test.py
+
+package_info_test: bind_package_info_test
+	pytest ../python/test/package_info/test.py
 # ========================
 
 # ²M²z
