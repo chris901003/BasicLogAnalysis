@@ -45,14 +45,14 @@ python_bind_test: bind_test
 # ====== 琿代刚 ======
 
 # ネΘ python 代刚家舱
-bind_poisson_distributed_test:
-	$(CXX) $(CXXFLAGS2) -shared -fPIC -o ../python/test/distributed/PoissonDistributedTest$(PYTHON_SUF) Pybind/DistributedTest/poisson_test.cpp
+bind_distributed_test:
+	$(CXX) $(CXXFLAGS2) -shared -fPIC -o ../python/test/distributed/DistributedTest$(PYTHON_SUF) Pybind/DistributedTest/distributed_test.cpp
 
 # 代刚
-partial_test: poisson_distributed_test
+partial_test: distributed_test
 	@echo "===== Partial Test Finished ====="
 
-poisson_distributed_test: bind_poisson_distributed_test
+distributed_test: bind_distributed_test
 	pytest ../python/test/distributed/test.py
 # ========================
 
