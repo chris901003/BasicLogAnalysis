@@ -1,4 +1,4 @@
-from PoissonNet import Network
+import PoissonNet
 
 if __name__ == '__main__':
-    print("Poisson Net")
+    print("Main")

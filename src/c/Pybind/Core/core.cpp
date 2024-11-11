@@ -118,6 +118,12 @@ PYBIND11_MODULE(PoissonNet, m) {
     py::class_<NetPackageTypeData, PyNetPackageTypeData, std::shared_ptr<NetPackageTypeData>>(m, "NetPackageTypeData")
         .def(py::init<int, BaseDistributed*>())
         .def("generatePackageInfoData", &NetPackageTypeData::generatePackageInfoData);
+
+    py::enum_<PackageType>(m, "PackageType")
+        .value("file", PackageType::file)
+        .value("webview", PackageType::webview)
+        .value("live", PackageType::live)
+        .export_values();
     
     py::class_<NormalPackageTypeData, NetPackageTypeData, std::shared_ptr<NormalPackageTypeData>>(m, "NormalPackageTypeData")
         .def(py::init<int, BaseDistributed*, PackageType, double, double>())
