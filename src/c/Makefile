@@ -34,6 +34,22 @@ $(TARGET): $(OBJS)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+# ===== 建構 =====
+build: SRC_FILES = \
+	Pybind/Core/core.cpp \
+	Datas/PackageInfo/FilePackageInfo/file_package_info_data.cpp \
+	Datas/PackageInfo/WebViewPackageInfo/web_view_package_info_data.cpp \
+	Datas/PackageInfo/LivePackageInfo/live_package_info_data.cpp \
+	Datas/PackageInfo/LivePackageInfo/live_quality_data.cpp \
+	Utilities/utilities_string.cpp \
+	Datas/PackageTypeConfig/NormalPackageType/normal_package_type_data.cpp \
+	Network/network.cpp \
+
+build:
+	$(CXX) $(CXXFLAGS2) -shared -fPIC -o ../python/PoissonNet$(PYTHON_SUF) $(SRC_FILES)
+
+# ===== 測試 =====
+
 # 生成 python 模組
 bind_test:
 	$(CXX) $(CXXFLAGS2) -shared -fPIC -o ../python/test/bind_test$(PYTHON_SUF) Pybind/bind_test.cpp

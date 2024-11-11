@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class PoissonDistributed: BaseDistributed {
+class PoissonDistributed: public BaseDistributed {
     private:
     double averageArriveRate;
     poisson_distribution<> poisson_dist;

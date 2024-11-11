@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class UniformDistributed: BaseDistributed {
+class UniformDistributed: public BaseDistributed {
     private:
     int range_min, range_max;
     uniform_int_distribution<> dist;

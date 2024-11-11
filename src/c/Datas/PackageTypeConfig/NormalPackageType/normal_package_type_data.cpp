@@ -49,4 +49,6 @@ PackageInfoData* NormalPackageTypeData::generatePackageInfoData() {
         case PackageType::live:
             return new LivePackageInfoData(tag, packetSize, LiveQuality::medium);
     }
+    
+    return nullptr;
 }

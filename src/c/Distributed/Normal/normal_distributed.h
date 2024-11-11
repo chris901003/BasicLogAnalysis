@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class NormalDistributed: BaseDistributed {
+class NormalDistributed: public BaseDistributed {
     private:
     double mean;
     double stddev;
