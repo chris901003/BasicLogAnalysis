@@ -16,8 +16,8 @@ Basic Information
 **GitHub**: https://github.com/chris901003/PoissonNet
 
 **More Information**:
-https://hackmd.io/@ZephyrHuang/rkrELMVEyl
-https://www.zephyrhuang.org/poisson-net/
+  - https://hackmd.io/@ZephyrHuang/rkrELMVEyl
+  - https://www.zephyrhuang.org/poisson-net/
 
 ****************************
 Problem to Solve
@@ -83,6 +83,9 @@ and retrieve simulation results.
 ****************************
 API Description
 ****************************
+
+More details about the API can be found at:
+https://hackmd.io/@ZephyrHuang/rkrELMVEyl
 
 .. code:: python
 
