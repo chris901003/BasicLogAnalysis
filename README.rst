@@ -15,6 +15,10 @@ Basic Information
 
 **GitHub**: https://github.com/chris901003/PoissonNet
 
+**More Information**:
+https://hackmd.io/@ZephyrHuang/rkrELMVEyl
+https://www.zephyrhuang.org/poisson-net/
+
 ****************************
 Problem to Solve
 ****************************
