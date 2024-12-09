@@ -28,9 +28,25 @@ jobs:
       - name: Run test build & test
         run: |
           make python_bind_test
+          make clean
         working-directory: src/c
       
       - name: Run partial test
         run: |
           make partial_test
+          make clean
         working-directory: src/c
+      
+      - name: Run build
+        run: |
+          make build
+        working-directory: src/c
+      
+      - name: Check so file exists
+        run: |
+          if [ -f src/python/PoissonNet.*.so ]; then
+            echo "so file exists"
+          else
+            echo "so file does not exist"
+            exit 1
+          fi
