@@ -82,35 +82,20 @@ API Description
 
 .. code:: python
 
-    import poisson_simulator
-    import matplotlib.pyplot as plt
+  from PoissonNet import Network, PoissonDistributed, NormalPackageTypeData, PackageType
 
-    # 設定模擬參數
-    lambda_high = 5.0  # 高優先級流的到達率
-    lambda_medium = 3.0  # 中優先級流的到達率
-    lambda_low = 1.0  # 低優先級流的到達率
-    duration = 10.0  # 模擬持續時間為 10 秒
-
-    packets = poisson_simulator.simulate_multi_priority_packets(lambda_high, lambda_medium, lambda_low, duration)
-
-    print("Packet Arrival Times and Priorities:")
-    for packet in packets:
-        print(f"Arrival Time: {packet['arrival_time']} seconds, Priority: {packet['priority']}")
-
-    poisson_simulator.process_packets(packets)
-
-    arrival_times = [packet['arrival_time'] for packet in packets]
-    priorities = [packet['priority'] for packet in packets]
-
-    plt.figure(figsize=(10, 5))
-    plt.scatter(arrival_times, priorities, c=priorities, cmap='coolwarm', s=100, alpha=0.7)
-    plt.title('Packet Arrivals with Different Priorities')
-    plt.xlabel('Time (seconds)')
-    plt.ylabel('Priority Level')
-    plt.colorbar(label='Priority')
-    plt.grid(True)
-    plt.show()
-
+  if __name__ == '__main__':
+      poissonDistributed = PoissonDistributed(2)
+      packageType = NormalPackageTypeData(1, poissonDistributed, PackageType.file, 2000, 2500)
+      packageTypes = [packageType]
+      network = Network(packageTypes)
+      for i in range(0, 3):
+          packages = network.generatePackages()
+          print("===== Result =====")
+          for package in packages:
+              print(f"Id: {package.id}, Tag: {package.tag}, Size: {package.packetSize}, Count: {package.packetCount}")
+          print("==================")
+      print("===== End =====")
 
 ****************************
 Engineering Infrastructure
